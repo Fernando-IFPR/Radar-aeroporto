@@ -41,3 +41,43 @@ function atualizarPainel() {
 
 // Executando a função para desenhar a tela inicial
 atualizarPainel();
+
+
+
+// 1. Capturando o Formulário e os Campos de Texto
+const formulario = document.getElementById("formDespacho");
+const campoCodigo = document.getElementById("inputCodigo");
+const campoDestino = document.getElementById("inputDestino");
+
+// 2. Adicionando o "Ouvinte de Evento" no envio (submit) do formulário
+formulario.addEventListener("submit", function(event) {
+
+    
+    // DESAFIO 1: Impedir o recarregamento da página!
+    // PESQUISE NO GOOGLE: "JavaScript prevent form submit reload MDN"
+    event.preventDefault();
+    console.log("Prevenção de recarregamento/submissão interceptado!");
+    
+
+    // DESAFIO 2: Capturar o texto que o despachante digitou nos inputs
+    // PESQUISE NO GOOGLE: "JavaScript get input value W3Schools"
+    let codigoDigitado = campoCodigo.value;
+    let destinoDigitado = campoDestino.value;
+
+    // DESAFIO 3: Criar um novo objeto e atualizar a tela
+    // a) Crie um novo objeto literal de Voo com os dados capturados
+    let novoVoo = {
+        codigo: codigoDigitado,
+        destino: destinoDigitado,
+        status: "Embarque",
+        portao: "TBA" // To Be Announced (A definir)
+    };
+
+    // b) Adicione este novo voo dentro do Array 'listaDeVoos' (Lembra do push?)
+    listaDeVoos.push(novoVoo);
+    // c) Chame a função atualizarPainel() da aula passada para desenhar a tela novamente!
+    atualizarPainel();
+    // d) Opcional: Limpe os campos de texto para o próximo cadastro.
+    campoCodigo.value = ""; 
+    campoDestino.value = "";
+});
