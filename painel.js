@@ -1,6 +1,3 @@
-// ========================================================
-// 1. O MOLDE (CLASSE VOO)
-// ========================================================
 class Voo {
     constructor(codigo, destino) {
         this.codigo = codigo;
